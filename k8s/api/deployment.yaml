@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-produto
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: app-produto
+  template:
+    metadata:
+      labels:
+        app: app-produto
+    spec:
+      containers:
+      - name: app-produto
+        image: phgr/api-kubedev:v2
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "512m"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGODB_URI
+          value: mongodb://mongouser:mongopwd@mongodb-service:27017/admin
