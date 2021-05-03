@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-produto
+  name: api-produto
 spec:
   replicas: 10
   selector:
     matchLabels:
-      app: app-produto
+      app: api-produto
   template:
     metadata:
       labels:
-        app: app-produto
+        app: api-produto
     spec:
       containers:
-      - name: app-produto
-        image: phgr/api-kubedev:v2
+      - name: api-produto
+        image: prissie/api-bootcamp-produto:v2
         resources:
           limits:
             memory: "256Mi"
